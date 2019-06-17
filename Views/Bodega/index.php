@@ -5,6 +5,7 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 	}
 	else{
 		?>
+		<h2>SALUDOS LEOOOOOOOO </h2>
 		<div class="container">
 			<h2>Bodegas</h2>
 			<button class="waves-effect waves-light btn modal-trigger"  href="#modal1" onClick="$('.modal').modal();libAjaxGet('bodega/create','divModal')">
