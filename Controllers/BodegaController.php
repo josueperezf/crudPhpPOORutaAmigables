@@ -41,6 +41,8 @@ class BodegaController
 		$bodega= new Bodega(null, $nombre,$direccion,'1');
 		if($bodega->save())
 			http_response_code(201);
+		else
+			http_response_code(500);
 		//header('Location: '.'?controller=bodega&action=index');
 	}
 
@@ -109,7 +111,6 @@ class BodegaController
 		){
 			exit();
 		}
-		//$id=$_GET['id'];
 		//busco si el id pasado existe en la base de datos
 		$bodega=Bodega::find("b.id=$id");
 		if(count($bodega)==0){

@@ -83,14 +83,37 @@ class AppModel{
         //echo json_encode( $aux);
         return $aux;
     }
-    public static function buscar(){
+    public static function find($query='', $imprimirSql=false){
+        //con la siguiente linea obtengo el nombre de la clase q invoca a este metodo sin importar q el mismo sea estatico,
+        // solo funciona de php 5.3 en adelante
+        $nombreDelModelo = get_called_class();
         $db=Db::getConnect();
-        $tabla=$this->table;
+        $instancia= new $nombreDelModelo;
+        $tabla=$instancia->table;
         $primaryKey='id';
-        if(property_exists($this, 'primaryKey')){
-            $primaryKey=$this->primaryKey;
+        if(property_exists($instancia, 'primaryKey')){
+            $primaryKey=$instancia->primaryKey;
         }
-        echo 'soy bsucar';
+        $respuesta=[];
+        if($query!='')
+            $query=' WHERE '.$query;
+        $sql="SELECT * FROM $tabla as b $query order by b.id desc";
+        if($imprimirSql)
+            echo $sql;
+        if(!$select=$db->query($sql)){
+			http_response_code(500);
+            return false;
+        }
+        $i=0;
+		foreach($select->fetchAll() as $data){
+            $respuesta[]= new $nombreDelModelo;
+            foreach($instancia->atributos as $atributo):
+                $respuesta[$i]->$atributo=$data[$atributo];
+            endforeach;
+            $i++;
+		}
+        return $respuesta;
+        //retorna array de instancias del metodo que hizo la llamda
     }
     public function save(){
         //echo get_class($this) . "<br>";

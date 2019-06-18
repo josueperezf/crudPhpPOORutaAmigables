@@ -12,7 +12,7 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 			</button>
 			<div class="input-field">
       			<label for="text">Busqueda</label>
-				<input class="form-control" id="busqueda" name='busqueda' name="id" type="text" onkeyup="libAjaxGet('bodega/index&busqueda='+this.value ,'divIndex',function(){}) ">
+				<input class="form-control" id="busqueda" name='busqueda' name="id" type="text" onkeyup="libAjaxGet('bodega/index&busqueda='+this.value ,'divIndex' ) ">
 			</div>
 		</div>
 		<?php

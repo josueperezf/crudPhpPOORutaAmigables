@@ -60,18 +60,5 @@ class Bodega extends AppModel
 		end) )";
 		return parent::paginar($sql);
 	}
-	public static function find($query=null){
-		$db=Db::getConnect();
-		$bodegas=[];
-		if(!$query)
-			$select=$db->query('SELECT * FROM bodegas order by id desc');
-		else{
-			$select=$db->query("SELECT * FROM bodegas as b where $query order by b.id desc");
-		}
-		foreach($select->fetchAll() as $bodega){
-			$bodegas[]=new Bodega($bodega['id'],$bodega['nombre'],$bodega['direccion'],$bodega['estatus']);
-		}
-		return $bodegas;
-	}
 }
 ?>
