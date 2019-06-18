@@ -1,5 +1,5 @@
 <?php
-namespace App\Traits;
+namespace Traits;
 use Db;
 trait CrudTrait
 {

@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 use Db;
-use App\Traits\CrudTrait;
+use Traits\CrudTrait;
 class AppModel{
     use CrudTrait;
 }
