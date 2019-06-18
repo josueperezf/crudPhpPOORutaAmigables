@@ -51,7 +51,14 @@ function call($controller, $action,$parametros=null){
 	foreach ($ficheros as $key => $value) {
 		require_once($directorio.'/'.$value);
 	}
-	//fin de la carga de las librerias
+	//fin de la carga de las Traits
+	//cargar todas las Traits
+	$directorio = 'Traits';
+	$ficheros = array_diff(scandir($directorio), array('..', '.'));
+	foreach ($ficheros as $key => $value) {
+		require_once($directorio.'/'.$value);
+	}
+	//fin de la carga de las Traits
 
 	//cargar todos los modelos
 	$directorio = 'Model';

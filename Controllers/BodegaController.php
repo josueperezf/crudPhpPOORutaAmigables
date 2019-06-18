@@ -15,6 +15,7 @@ class BodegaController
 	}
 
 	function create(){
+		$bodega = new Bodega();
 		require_once('Views/Bodega/create.php');
 	}
 
