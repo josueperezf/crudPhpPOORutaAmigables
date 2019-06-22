@@ -1,6 +1,6 @@
 <?php
-namespace Traits;
-use Db;
+namespace App\Traits;
+use Config\Db;
 trait CrudTrait
 {
     public static function paginar($query){

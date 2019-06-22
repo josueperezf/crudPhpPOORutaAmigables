@@ -1,6 +1,7 @@
 <?php 
-use Model\Bodega;
-use Librerias\ValidacionesLibreria;
+namespace App\Controllers;
+use App\Model\Bodega;
+use App\Librerias\ValidacionesLibreria;
 class BodegaController
 {
 	function __construct()
@@ -59,7 +60,7 @@ class BodegaController
 		$bodega=Bodega::find("b.id=$id");
 		$bodega=$bodega[0];
 		if(!$bodega)
-			header('Location: '.'correr.php?controller=error&action=noEncontrado');
+			header('Location: '.str_replace("index.php", "", $_SERVER['PHP_SELF']).'error/noEncontrado');
 		require_once('Views/Bodega/edit.php');
 	}
 
@@ -85,7 +86,7 @@ class BodegaController
 		$bodega=Bodega::find("b.id=$id");
 		$bodega=$bodega[0];
 		if(!$bodega){
-			header('Location: '.'correr.php?controller=error&action=noEncontrado');
+			header('Location: '.str_replace("index.php", "", $_SERVER['PHP_SELF']).'error/noEncontrado');
 			exit();
 		}
 		//busco si el nombre esta repetido 
@@ -120,9 +121,9 @@ class BodegaController
 		}
 		//como la funcion find me retorna un array, tomo solo el primero q es el unico q retornara
 		$bodega=$bodega[0];
-		$bodega->delete($bodega->getId());
-		//$this->show();
-		header('Location: '.'/crudPhpPOORutaAmigables/bodega/index');
+		if($bodega->delete())
+			header('Location: '.'/crudPhpPOORutaAmigables/bodega/index');
+		//echo "<script>location.href='/crudPhpPOORutaAmigables/bodega/index/';</script>";
 	}
 }
 ?>

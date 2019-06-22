@@ -1,6 +1,6 @@
 <?php
-namespace Model;
-use Db;
+namespace App\Model;
+use Config\Db;
 class Bodega extends AppModel
 {
 	protected $id;

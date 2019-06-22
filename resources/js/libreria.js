@@ -85,15 +85,16 @@ function libAjaxGet(url,divActualizar,callback=null)
 
 function mostrarErrors(e)
 {
-
 	if(e.status==422){
 		//esta parte la hice porque no supe como enviar datos cuando envio estatus 422
-		var p=JSON.parse(e.statusText);
+		var p=JSON.parse(e.responseText);
 		var resp=p;
+		//las dos lineas son porque ya no paso el contenido como parte del texto en cabecera sino ahora de otra forma
+		//resp=JSON.parse(resp);
+		//JSON.stringify(resp);
 	}else{
 		var resp=e.responseJSON;
 	}
-	
 	var texto="";
 	$('form input').removeClass('invalid');
 	$('form div .helper-text').attr({'data-error':""});

@@ -1,4 +1,7 @@
 <?php
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
+//AUTOR INGENERIO JOSUE PEREZ
 //las siguientes lineas verifican si la llamada se hace con ajax, si es asi entonces solo se carga el codigo nada del css o html del index
 if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
 {

@@ -73,7 +73,6 @@ if(!isset($paginacion)){
 	}
 	?>
 	</ul>
-	<?=$url ?>
 	<script>
 		campoOrdernar="<?= $paginacion['campoOrdernar'];?>";
 		orderBy="<?= $paginacion['orderBy'];?>";

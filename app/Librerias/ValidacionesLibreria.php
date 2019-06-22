@@ -1,5 +1,5 @@
 <?php
-namespace Librerias;
+namespace App\Librerias;
 class ValidacionesLibreria{
     public static function validacionTotal($arrayRequest=[],$parametros=[])
     {
@@ -10,8 +10,11 @@ class ValidacionesLibreria{
             }
         }
         if(count($data['errors'])>0){
-			$x=json_encode($data);
-            header("HTTP/1.0 422 $x");
+			//$x=json_encode($data);
+            //header("HTTP/1.0 422 $x");
+            http_response_code(422);
+            echo json_encode($data);
+		    exit(1);
             return false;
         }
         foreach ($parametros as $key => $value) {
@@ -24,8 +27,11 @@ class ValidacionesLibreria{
             }
         }
         if(count($data['errors'])>0){
-			$x=json_encode($data);
-            header("HTTP/1.0 422 $x");
+			//$x=json_encode($data);
+            //header("HTTP/1.0 422 $x");
+            http_response_code(422);
+            echo json_encode($data);
+		    exit(1);
             return false;
         }else{
             return true;
@@ -79,8 +85,11 @@ class ValidacionesLibreria{
         $data=['errors'=>[]];
         $data['errors'][$variable][]=$variable.': '.$error;
         if(count($data['errors'])>0){
-			$x=json_encode($data);
-            header("HTTP/1.0 422 $x");
+			//$x=json_encode($data);
+            //header("HTTP/1.0 422 $x");
+            http_response_code(422);
+            echo json_encode($data);
+		    exit(1);
             return false;
         }
     }

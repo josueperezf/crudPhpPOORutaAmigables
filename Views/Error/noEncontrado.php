@@ -1,4 +1,4 @@
 <div align='center'>
 <br>
-  <img src="assets/img/noDisponible.jpg" alt="" srcset="">
+  <img src="resources/img/noDisponible.jpg" alt="" srcset="">
 </div>

@@ -1,4 +1,5 @@
 <?php 
+namespace Config;
 class Routing{
 	public static function controladorMetodos(){
 		//creo array con los controladores posibles y sus metodos permitidos

@@ -1,5 +1,6 @@
-<?php 
-use Model\Alumno;
+<?php
+namespace App\Controllers;
+use App\Model\Alumno;
 class ErrorController
 {
     public function noEncontrado(){
