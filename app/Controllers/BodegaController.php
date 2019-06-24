@@ -21,15 +21,11 @@ class BodegaController
 	}
 
 	function store(){
-		//valido los campos que llegan por metodo post 
-		if(!ValidacionesLibreria::validacionTotal($_POST,
+		ValidacionesLibreria::validacionTotal($_POST,
 			[
 				'nombre'=>[array('longitud'),array('inicio'=>3,'fin'=>'100')],
 				'direccion'=>[array('longitud'),array('inicio'=>3,'fin'=>'100')],
-			])
-		){
-			exit();
-		}
+			]);
 		$nombre=strtoupper(trim($_POST['nombre']));
 		$direccion=strtoupper(trim($_POST['direccion']));
 		//valido sino exite otra bodega con el mismo nombre
@@ -37,7 +33,6 @@ class BodegaController
 		if(count($bodega)>0){
 			//nombre repetido
 			ValidacionesLibreria::mostrarError('nombre', 'Ya existe un elemento con este valor');
-			exit();
 		}
 
 		$bodega= new Bodega(null, $nombre,$direccion,'1');
@@ -49,13 +44,10 @@ class BodegaController
 	}
 
 	function edit($id=0){
-		if(!ValidacionesLibreria::validacionTotal(['id'=>$id],
+		ValidacionesLibreria::validacionTotal(['id'=>$id],
 			[
 				'id'=>[array('entero')],
-			])
-		){
-			exit();
-		}
+			]);
 
 		$bodega=Bodega::find("b.id=$id");
 		$bodega=$bodega[0];
@@ -66,15 +58,12 @@ class BodegaController
 
 	function update(){
 		//valido los campos que me envian
-		if(!ValidacionesLibreria::validacionTotal($_POST,
+		ValidacionesLibreria::validacionTotal($_POST,
 			[
 				'id'=>[array('entero')],
 				'nombre'=>[array('longitud'),array('inicio'=>3,'fin'=>'100')],
 				'direccion'=>[array('longitud'),array('inicio'=>3,'fin'=>'100')],
-			])
-		){
-			exit();
-		}
+			]);
 		$estatus=1;
 		if (!isset($_POST['estatus']))
 			$estatus=0;
